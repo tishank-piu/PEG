@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
-import 'package:lottie/lottie.dart';
 import 'package:peg/Presentation/CreatePegScreen/createPegScreen.dart';
+import 'package:peg/Presentation/Design/description.dart';
 import 'package:peg/Presentation/PegScreen/pegScreen.dart';
 import 'package:peg/Presentation//QuizScreen/quizScreen.dart';
 import 'package:peg/Presentation//WalletScreen/walletScreen.dart';
@@ -10,6 +10,7 @@ import 'package:peg/Presentation//WalletScreen/walletScreen.dart';
 import '../CartScreen/cartScreen.dart';
 import '../LeaderboardScreen/leaderboardScreen.dart';
 import '../LoginScreen/loginScreen.dart';
+import '../ProductScreen/productScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -61,86 +62,98 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(0, 252, 206, 30),
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20)
-        ),
-        actions: [
-          PopupMenuButton(
-            icon: Icon(Icons.menu),
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                child: Text('My Profile'),
-                value: 'profile',
-              ),
-              PopupMenuItem(
-                child: Text('Invite a friend'),
-                value: 'invite',
-              ),
-              PopupMenuItem(
-                child: Text('My Dashboard'),
-                value: 'dashboard',
-              ),
-              PopupMenuItem(
-                child: Text('Logout'),
-                value: 'logout',
-              ),
-            ],
-            onSelected: (value) {
-              // Handle menu item selection
-              if (value == 'profile') {
-                // Handle My Profile action
-              } else if (value == 'invite') {
-                // Handle Invite a friend action
-              } else if (value == 'dashboard') {
-                // Handle My Dashboard action
-              } else if (value == 'logout') {
-                // Handle Logout action
-                _showLogoutDialog();
-              }
-            },
-          ),
-          SizedBox(width: 16),
-        ],
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16.0), // Add some left padding
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.black, // Adjust icon color as needed
-                  size: 24, // Adjust icon size as needed
-                ),
-              ),
-              SizedBox(width: 10, height: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Hello User',
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(fontSize: 16), // Adjust font size as needed
-                  ),
-                  Text(
-                    'Explore the PEG which you are interested',
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(fontSize: 10, color: Colors.grey), // Adjust font size and color as needed
-                  ),
-                ],
-              ) // Add some space between CircleAvatar and Text
-            ],
-          ),
-        ),
-      ),
+       appBar: AppBar(
+         backgroundColor: Color.fromRGBO(0, 252, 206, 30),
+         elevation: 0,
+         shape: RoundedRectangleBorder(
+             borderRadius: BorderRadius.circular(20)
+         ),
+         actions: [
+           PopupMenuButton(
+             icon: Icon(Icons.notifications),
+             itemBuilder: (context) => [
+               PopupMenuItem(
+                 child: Text('My Profile'),
+                 value: 'profile',
+               ),
+               PopupMenuItem(
+                 child: Text('Invite a friend'),
+                 value: 'invite',
+               ),
+               PopupMenuItem(
+                 child: Text('My Dashboard'),
+                 value: 'dashboard',
+               ),
+               PopupMenuItem(
+                 child: Text('Logout'),
+                 value: 'logout',
+               ),
+             ],
+             onSelected: (value) {
+               // Handle menu item selection
+               if (value == 'profile') {
+                 // Handle My Profile action
+               } else if (value == 'invite') {
+                 // Handle Invite a friend action
+               } else if (value == 'dashboard') {
+                 // Handle My Dashboard action
+               } else if (value == 'logout') {
+                 // Handle Logout action
+                 _showLogoutDialog();
+               }
+             },
+           ),
+           SizedBox(width: 16),
+         ],
+         leading: Padding(
+           padding: const EdgeInsets.only(left: 16.0), // Add some left padding
+           child: Row(
+             children: [
+               CircleAvatar(
+                 radius: 20,
+                 backgroundColor: Colors.white,
+                 child: Icon(
+                   Icons.person,
+                   color: Colors.black, // Adjust icon color as needed
+                   size: 24, // Adjust icon size as needed
+                 ),
+               ),
+               SizedBox(width: 10), // Add some space between CircleAvatar and Text
+               Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Text(
+                     'Hello User',
+                     textAlign: TextAlign.justify,
+                     style: TextStyle(fontSize: 16), // Adjust font size as needed
+                   ),
+                   Text(
+                     'Explore the PEG which you are interested',
+                     textAlign: TextAlign.justify,
+                     style: TextStyle(fontSize: 10, color: Colors.grey), // Adjust font size and color as needed
+                   ),
+                 ],
+               ),
+             ],
+           ),
+         ),
+       ),
       body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              '',
+              style: TextStyle(
+                fontFamily: 'Comfortaa',
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
           SizedBox(height: 20),
           CarouselSlider(
             options: CarouselOptions(
@@ -320,6 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ElevatedButton(
                           onPressed: () {
                             // Add button onPressed logic
+                            Navigator.push(context, MaterialPageRoute(builder:  (context) => DescriptionScreen()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color.fromRGBO(0, 252, 206, 30),
@@ -915,7 +929,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.shopping_cart),
                 onPressed: () {
                   // Handle cart button pressed
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProductScreen()));
                 },
               ),
               IconButton(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:peg/Presentation/HomeScreen/homeScreen.dart';
+import 'package:peg/Presentation/InvitationPreviewPage/invitationPreviewPage.dart';
 
 class NewCreatePegScreenUsingTemplate extends StatefulWidget {
   final String templateName;
@@ -58,7 +60,8 @@ class _NewCreatePegScreenUsingTemplateState
               onPressed: () {
                 // Logic for sharing invitation now
                 // Replace with your implementation
-                Navigator.pop(context); // Close pop-up
+                Navigator.pop(context);// Close pop-up
+                Navigator.push(context, MaterialPageRoute(builder: (context) => InvitationPreviewPage()));
               },
               child: Text('Share Now'),
             ),
@@ -67,6 +70,7 @@ class _NewCreatePegScreenUsingTemplateState
                 // Logic for sharing invitation later
                 // Replace with your implementation
                 Navigator.pop(context); // Close pop-up
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
               },
               child: Text('Share Later'),
             ),
