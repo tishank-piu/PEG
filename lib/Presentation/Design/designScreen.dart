@@ -12,9 +12,6 @@ class _DesignScreenState extends State<DesignScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Design'),
-      // ),
       appBar: AppBar(
         title: Row(
           children: [

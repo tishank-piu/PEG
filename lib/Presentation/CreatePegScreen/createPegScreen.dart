@@ -24,9 +24,6 @@ class _CreatePegScreenState extends State<CreatePegScreen> {
 
   // Function to handle finish button click
   void handleFinishButtonClick() {
-    // Logic to handle finishing and sharing the invitation
-    // You can implement this based on your requirements
-    // For now, let's just print the entered details
     print('PEG Name: ${pegNameController.text}');
     print('Open/Restricted: $openRestrictedOption');
     print('PEG Type: ${pegTypeController.text}');

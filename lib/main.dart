@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:peg/Presentation/PasswordReset/passwordReset.dart';
-// import 'package:peg/SignUpScreen/signup_Screen.dart';
-// import 'package:peg/SplashScreen/splash_screen.dart';
-//
-// import 'LoginScreen/loginScreen.dart';
 import 'Presentation/LoginScreen/loginScreen.dart';
 import 'Presentation/SplashScreen/splash_screen.dart';
 
@@ -20,7 +16,7 @@ class MyApp extends StatelessWidget{
       initialRoute: '/',
        routes: {
         '/': (context) => SplashScreen(),
-       '/login': (context) => PasswordReset(),
+       '/login': (context) => LoginScreen(),
       },
      // home:SplashScreen(),
     );
